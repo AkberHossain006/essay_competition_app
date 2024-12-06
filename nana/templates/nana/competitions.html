@@ -1,0 +1,40 @@
+{% extends "nana/base.html" %}
+{% block page_header %}
+{% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+<style>
+        body {
+            background-color: rgb(125, 182, 231);
+            color: #333;
+        }
+</style>
+
+         <h1>Competitions</h1>
+{% endblock page_header %}
+<body>
+{% block content %}
+<h4>  Most of the competitions had finished. You can showcase your talents by participating in these Competitions.</h4>
+
+
+
+ <div class="property-grid ">
+
+  {% for x in competitions %}
+ <div class="property-card">
+
+         <a href="{% url 'nana:competition' x.id %}">
+             <h4>
+            {{ x.name }}
+             </h4>
+         </a>
+         <p> {{ x.deadline }} </p>
+  </div>
+
+  {% empty %}
+     <li class="list-group-item border-0">No competitions have been added yet.</li>
+  {% endfor %}
+
+ </body>
+
+{% endblock content %}

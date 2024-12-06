@@ -1,0 +1,45 @@
+{% extends "nana/base.html" %}
+
+{% block page_header %}
+{% load static %}
+ {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <style>
+        .center-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+    body {
+            background-color: rgb(125, 182, 231);
+        }
+.center-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh; /* Makes the container fill the viewport height */
+}
+    </style>
+    <h1>Topic: {{ topic.name }}</h1>
+{% endblock page_header %}
+
+{% block content %}
+    {% if deadline_expired %}
+         <div class="center-content">
+         <div class="alert alert-warning" role="alert">
+            Sorry, the deadline for this competition has passed. You can no longer submit an essay.
+        </div>
+        <img src="{% static 'nana/images/expired.jpg' %}" alt="" height="500px" width="550px" class="mw-100 center-image">
+    </div>
+    {% else %}
+<p>Add a new Essay</p>
+        <form action="{% url 'nana:new_essay' topic.id %}" method="post">
+            {% csrf_token %}
+            {{ form.as_div }}
+            <button class="btn btn-warning" name="submit">Add essay</button>
+        </form>
+    {% endif %}
+{% endblock content %}

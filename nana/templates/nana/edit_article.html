@@ -1,0 +1,16 @@
+{% extends "nana/base.html" %}
+{% block content %}
+<p><a href="{% url 'nana:topic' topic.id %}">{{ topic }}</a></p>
+<p>Edit entry:</p>
+<form action="{% url 'nana:edit_article' article.id %}" method="post">
+     {% csrf_token %}
+     {{ form.as_div}}
+    <button name="submit">Save Changes</button>
+</form>
+
+
+
+
+
+
+{% endblock content %}

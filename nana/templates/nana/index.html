@@ -1,0 +1,33 @@
+
+{% extends "nana/base.html" %}
+{% block page_header %}
+{% load django_bootstrap5 %}
+
+
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
+    <style>
+        body {
+            background-color: rgb(125, 182, 231);
+
+        }
+        </style>
+  <div class="p-3 mb-4 bg-light border rounded-3">
+      <div class="container-fluid py-4">
+          <h6 class="display-3">Compete the World with your Ideas & Experiences.</h6>
+          <p class="lead">Make your own essay, and keep a list of the topics you are writing about.</p>
+
+      </div>
+  </div>
+{% endblock page_header %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'nana/styles.css' %}">
+{% block content %}
+
+<p class="text">
+    Welcome to the home page. Here you can participate in different Competitions, Topics & write essays which are available.
+    To get more information about these competition, please visit <a href="{% url 'nana:about' %}">about section.</a>
+    If there is any problem that you are facing, please <a href="{% url 'nana:contact' %}">contact us.</a>
+</p>
+{% endblock content %}

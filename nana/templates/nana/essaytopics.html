@@ -1,0 +1,47 @@
+{% extends "nana/base.html" %}
+
+{% block page_header %}
+{% load static %}
+ {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <style>
+    body {
+            background-color: rgb(125, 182, 231);
+        }
+        .card {
+    max-width: 650px; /* Adjust the width as needed */
+    margin: 0 auto;   /* Center the card horizontally */
+}
+
+.card-header, .card-body {
+    padding: 10px;    /* Adjust padding if needed */
+}
+    </style>
+<body>
+    <h1>{{ competition.name }}</h1>
+{% endblock page_header %}
+
+{% block content %}
+    <h5>We will include more topics. These  are available:</h5>
+
+    {% for x in essay_topics %}
+        <div class="card mb-3">
+            <h4 class="card-header">
+                <a href="{% url 'nana:new_essay' x.id %}">
+                    {{ x.name }}
+                </a>
+                {% if competition.deadline < now %}
+                    <!-- Show winner only if competition deadline has passed -->
+                    <br>Winner: {{ x.winner }}
+                {% endif %}
+            </h4>
+            <div class="card-body">
+                <!-- You can add content here if needed -->
+            </div>
+        </div>
+    {% empty %}
+        <p>There are no entries for the topic yet.</p>
+    {% endfor %}
+{% endblock content %}
+</body>

@@ -1,0 +1,29 @@
+{% extends "nana/base.html" %}
+{% block page_header %}
+         <h1>{{ topic.text}}</h1>
+{% endblock page_header %}
+{% block content %}
+
+
+<p>Articles:</p>
+<p>
+    <a href="{% url 'nana:new_article' topic.id %}">Add new article</a>
+</p>
+    {% for x in articles %}
+    <div class="card mb-3">
+        <h4 class="card-header">
+            {{ x.date_added | date:'M d, Y H:i'}}
+            <small>
+                <a href="{% url 'nana:edit_article' x.id %}">
+                    edit article
+                </a>
+            </small>
+        </h4>
+        <div class="card-body">{{ x.text|linebreaks }}</div>
+    </div>
+    {% empty %}
+    <p>There are no entries for the topic yet.</p>
+    {% endfor %}
+
+{% endblock content %}
+
