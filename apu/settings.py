@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import whitenoise
 import dj_database_url
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -134,6 +135,8 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 LOGIN_REDIRECT_URL='nana:index'
 LOGOUT_REDIRECT_URL='accounts:login'
 LOGIN_URL='accounts:login'
