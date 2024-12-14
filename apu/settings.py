@@ -27,10 +27,7 @@ SECRET_KEY = 'django-insecure-fl5(_6536^e!v3tv*i4a2-o^inq13b3e1!vtp%hc+bhb*0z###
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['essaycompetitionapp-production.up.railway.app',]
-CSRF_TRUSTED_ORIGINS = [
-    'https://essaycompetitionapp-production.up.railway.app',
-]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
