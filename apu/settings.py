@@ -29,6 +29,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://essaycompetitionapp-production.up.railway.app',
+    'http://essaycompetitionapp-production.up.railway.app',
+]
+
 
 # Application definition
 
